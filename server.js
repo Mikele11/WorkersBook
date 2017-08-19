@@ -44,7 +44,7 @@ app.put('/bookday/:id', function (req, res) {
   console.log(req.body.name);
   db.bookday.findAndModify({
     query: {_id: mongojs.ObjectId(id)},
-    update: {$set: {name: req.body.name, gender: req.body.gender, phone: req.body.phone}},//change avtomatic change
+    update: {$set: {name: req.body.name, status: req.body.status, description: req.body.description}},// automatic change
     new: true}, function (err, doc) {
       res.json(doc);
     }

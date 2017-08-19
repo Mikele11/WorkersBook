@@ -3,7 +3,7 @@ myApp.controller('AppCtrl', ['$scope', '$http', function($scope, $http) {
     console.log("I am in controller");
     $scope.filteredTodos = []
    ,$scope.currentPage = 1
-   ,$scope.numPerPage = 2
+   ,$scope.numPerPage = 3
    ,$scope.maxSize = 5;
    
 var refresh = function() {
@@ -18,12 +18,11 @@ var refresh = function() {
   });
 };
 refresh();
-//панинация
+//pagination
   $scope.numPages = function () {
 	$http.get('/bookday').success(function(response) {
     $scope.bookday = response;
     $scope.numPages= Math.ceil($scope.bookday.length / $scope.numPerPage);
-	console.log($scope.bookday.length+'+++++++');
   });  
   };
   
@@ -34,7 +33,7 @@ refresh();
     $scope.filteredTodos = $scope.bookday.slice(begin, end);
 	}); 
   });  
-//конец пагинации
+//End pagination
 $scope.addContact = function() {
   console.log($scope.contact);
   //---------------
